@@ -1,0 +1,426 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+/* change current tab color*/
+.nav-link.active{
+    color: black;
+}
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+    align-content: center;
+}
+.header {
+    background: white;
+    padding: 0 15px;
+    margin-bottom: 15px;
+    box-shadow: 0px 0px 0px 1px black;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+.logo {
+    font-size: 20px;
+    padding: 7.5px 10px 7.5px 0;
+}
+form {
+    color: #555;
+    display: flex;
+    padding: 2px;
+    border: 1px solid currentColor;
+    border-radius: 20px;
+    margin: 7px 0 0px;
+}
+.search-form {
+    flex-grow: 1000;
+}
+input[type='search'] {
+    background: transparent;
+    width: 100%;
+    margin-left: 4px;
+    padding: 7px 8px;
+    font-size: 14px;
+    color: inherit;
+    border: 0px solid transparent;
+    border-radius: inherit;
+    appearance: auto;
+    outline: none;
+    border: none;
+}
+
+button[type='button'] {
+    overflow: hidden;
+    margin-left: 10px;
+    background: transparent;
+    border: 0px solid transparent;
+}
+
+.search {
+    margin-left: 0px;
+}
+.item {
+    padding: 10px;
+}
+.item.button {
+    padding: 9px 5px;
+}
+.item:not(.button) a:hover,
+.item a:hover::after {
+    color: #ccc;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu li a {
+    display: block;
+    padding: 15px 5px;
+}
+.item.button {
+    order: 2;
+}
+.item {
+    order: 3;
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+.button.secondary {
+    border-bottom: 1px #444 solid;
+}
+.main-content {
+    display: none;
+}
+.main-content {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+.banner-img > img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+.banner-container {
+    max-width: 100%;
+    max-height: 100%;
+    border: 0 solid black;
+    will-change: auto;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.banner-img {
+    width: 100%;
+    height: 100%;
+    top: 4;
+    left: 2;
+    position: relative;
+}
+.banner-data {
+    margin-left: 20px;
+    position: static;
+    width: 70%;
+    box-shadow: 2px 2px 0px 0px grey;
+    word-wrap: break-word;
+    top: 10%;
+    left: 2em;
+}
+.about-courses {
+    align-items: center;
+    align-content: center;
+}
+.item1 {
+    color: #777;
+    font-size: 25px;
+    display: inline-block;
+    padding: 10px;
+}
+
+.broad {
+    margin: 0px 20px;
+    padding: 2px 20px;
+}
+.course-continer {
+    margin-top: 70px;
+}
+.explore {
+    border: 2px solid black;
+}
+.explore:hover {
+    background-color: #777;
+    color: black;
+}
+a {
+    color: black;
+}
+a:hover {
+    color: black;
+}
+.courses {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0 4px;
+}
+.course {
+    width: 225px;
+    height: 530px;
+    margin: 5px;
+}
+.course img {
+    width: 100%;
+    height: 300px;
+}
+.banner-data {
+    padding: 2em;
+    background-color: white;
+}
+.languageicon {
+    margin-top: 0.5%;
+}
+.rate {
+    display: inline-flex;
+}
+.rank-corse {
+    list-style: none;
+    display: flex;
+}
+.title {
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+}
+.star-icon {
+    font-size: 12px;
+    color: rgb(248, 123, 6);
+}
+/* Tablet menu */
+@media all and (min-width: 700px) {
+    .menu {
+        justify-content: center;
+    }
+    .logo {
+        flex: 1%;
+    }
+    .item.button {
+        width: auto;
+        order: 1;
+        display: block;
+    }
+    .button.search {
+        display: none;
+        border-bottom: 1px #777 solid;
+    }
+    .menu li.button a {
+        padding: 10px 15px;
+        margin: 5px 0;
+    }
+    .button a {
+        background: black;
+        border: 1px royalblue solid;
+    }
+    .button.secondary {
+        border: 0;
+        color: black;
+    }
+    .sign a {
+        color: beige;
+    }
+    .button.secondary a {
+        background: transparent;
+        border: 1px black solid;
+    }
+    .button a:hover {
+        background: #888888;
+        text-decoration: none;
+    }
+    .button:not(.secondary) a:hover {
+        background: #888888;
+        border-color: darkblue;
+    }
+    .main-content {
+        display: flex;
+        flex-direction: column;
+    }
+    .banner-img > img {
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+    }
+    .banner-container {
+        max-width: 100%;
+        max-height: 100%;
+        box-shadow: #444;
+        border: 0 solid black;
+        align-content: center;
+        position: relative;
+        display: block;
+    }
+    .banner-img {
+        width: 100%;
+        height: 100%;
+        top: 4;
+        left: 2;
+        position: relative;
+    }
+    .banner-data {
+        position: absolute;
+        display: block;
+        width: 30%;
+        word-wrap: break-word;
+        top: 2em;
+        left: 2em;
+    }
+    .course-continer {
+        background-color: white;
+        width: inherit;
+        max-width: 100%;
+        margin-top: 70px;
+        flex-direction: column;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .item1 {
+        color: #777;
+        font-size: 25px;
+        display: inline-block;
+        padding: 10px;
+    }
+
+    .broad {
+        margin: 0px 20px;
+        padding: 2px 20px;
+    }
+    .explore {
+        border: 2px solid black;
+    }
+    .explore:hover {
+        background-color: #777;
+        color: black;
+    }
+    a:hover {
+        color: black;
+    }
+}
+.side {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+}
+/* Desktop menu */
+@media all and (min-width: 960px) {
+    .menu {
+        align-items: center;
+        flex-wrap: nowrap;
+        display: flex;
+        justify-content: space-between;
+    }
+    .logo {
+        width: 90px;
+        height: 40px;
+    }
+    .side-menu {
+        display: none;
+    }
+    .item {
+        order: 1;
+        width: auto;
+        display: block;
+    }
+    .button {
+        order: 2;
+    }
+
+    .buy-card {
+        margin-right: 20px;
+    }
+    .all {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .main-content {
+        height: auto;
+        width: 1300px;
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .banner-img > img {
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+    }
+    .banner-container {
+        max-width: 100%;
+        background-color: red;
+        max-height: 100%;
+        border: 0px;
+        align-content: center;
+        position: relative;
+    }
+    .banner-img {
+        width: 100%;
+        height: 100%;
+        top: 4;
+        left: 2;
+        position: relative;
+    }
+    .banner-data {
+        position: absolute;
+        width: 30%;
+        word-wrap: break-word;
+        top: 2em;
+        left: 2em;
+    }
+    .course-continer {
+        background-color: white;
+        width: inherit;
+        max-width: 100%;
+        margin-top: 90px;
+        flex-direction: column;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .item1 {
+        color: #777;
+        font-size: 25px;
+        display: inline-block;
+        padding: 10px;
+    }
+
+    .broad {
+        margin: 0px 20px;
+        padding: 2px 20px;
+    }
+    .explore {
+        border: 2px solid black;
+    }
+    .explore:hover {
+        background-color: #777;
+        color: black;
+    }
+    a:hover {
+        color: black;
+    }
+    .collection-continer-courses {
+        margin: 0px 20px;
+        box-shadow: 2px 2px 2px 2px #888888;
+        padding: 10px 35px;
+    }
+}

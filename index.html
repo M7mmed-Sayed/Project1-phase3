@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        />
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+            crossorigin="anonymous"
+        ></script>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="styles.css" />
+
+        <script src="script.js"></script>
+        <title>Udemy</title>
+    </head>
+    <body>
+        <section class="header">
+            <ul class="menu">
+                <li class="side-menu logo">
+                    <a href="#"> <i class="fa-solid fa-bars"></i></a>
+                </li>
+                <li class="logo">
+                    <a href="#"
+                        ><img
+                            width="80"
+                            height="33"
+                            src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
+                            alt=""
+                    /></a>
+                </li>
+                <li class="item"><a href="#">categories</a></li>
+                <li class="item search-form">
+                    <form>
+                        <button
+                            type="button"
+                            onclick="searchByInputValue();"
+                            onsubmit="return false"
+                        >
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                        <input
+                            type="search"
+                            id="input-search"
+                            placeholder="Search..."
+                        />
+                    </form>
+                </li>
+                <li class="item udy-bus"><a href="#">Udemy Business</a></li>
+                <li class="item"><a href="#">Teach on Udemy</a></li>
+                <li class="buy-card" style="order: 1">
+                    <a href="#"
+                        ><i
+                            class="fa-solid fa-cart-shopping"
+                            style="margin-top: 12px"
+                        ></i
+                    ></a>
+                </li>
+                <li class="item button secondary">
+                    <a href="#">login</a>
+                </li>
+                <li class="item button sign"><a href="#">sign up </a></li>
+
+                <li class="item languageicon button secondary" style="order: 4">
+                    <a href="$"><i class="fa-solid fa-globe"></i></a>
+                </li>
+            </ul>
+        </section>
+        <div class="all">
+            <div class="main-content">
+                <div class="banner-container" id="banner-container">
+                    <div class="banner-img" id="banner-img">
+                        <img
+                            src="https://img-c.udemycdn.com/notices/web_banner/slide_2_image_udlite/e6cc1a30-2dec-4dc5-b0f2-c5b656909d5b.jpg"
+                        />
+                    </div>
+                    <div class="banner-data" id="banner-data">
+                        <h1>Learning that gets you</h1>
+                        <p>
+                            Skills for your present (and your future). Get
+                            started with us.
+                        </p>
+                    </div>
+                </div>
+                <section class="about-courses">
+                    <div class="course-continer">
+                        <div class="broad">
+                            <h1>A broad selection of courses</h1>
+                            <p>
+                                Choose from 185,000 online video courses with
+                                new additions published every month
+                            </p>
+                            <ul class="nav" id="courses-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button
+                                        class="nav-link active btn-lg"
+                                        id="courses-python-tab"
+                                        data-bs-toggle="pill"
+                                        data-bs-target="#course-python"
+                                        type="button"
+                                        role="tab"
+                                        aria-controls="coures-python"
+                                        aria-selected="true"
+                                    >
+                                        <h3>Python</h3>
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button
+                                        class="nav-link btn-lg"
+                                        id="courses-excel-tab"
+                                        data-bs-toggle="pill"
+                                        data-bs-target="#course-excel"
+                                        type="button"
+                                        role="tab"
+                                        aria-controls="coures-excel"
+                                        aria-selected="false"
+                                    >
+                                        <h3>Excel</h3>
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button
+                                        class="nav-link btn-lg"
+                                        id="courses-web-tab"
+                                        data-bs-toggle="pill"
+                                        data-bs-target="#course-web"
+                                        type="button"
+                                        role="tab"
+                                        aria-controls="coures-web"
+                                        aria-selected="false"
+                                    >
+                                        <h3>Web</h3>
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button
+                                        class="nav-link btn-lg"
+                                        id="courses-web-js"
+                                        data-bs-toggle="pill"
+                                        data-bs-target="#course-javascript"
+                                        type="button"
+                                        role="tab"
+                                        aria-controls="coures-js"
+                                        aria-selected="false"
+                                    >
+                                        <h3>JS</h3>
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button
+                                        class="nav-link btn-lg"
+                                        id="courses-web-data-science"
+                                        data-bs-toggle="pill"
+                                        data-bs-target="#course-data-science"
+                                        type="button"
+                                        role="tab"
+                                        aria-controls="coures-data-science"
+                                        aria-selected="false"
+                                    >
+                                        <h3>data science</h3>
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button
+                                        class="nav-link btn-lg"
+                                        id="courses-aws-tab"
+                                        data-bs-toggle="pill"
+                                        data-bs-target="#course-aws"
+                                        type="button"
+                                        role="tab"
+                                        aria-controls="coures-aws"
+                                        aria-selected="false"
+                                    >
+                                        <h3>aws cert</h3>
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button
+                                        class="nav-link btn-lg"
+                                        id="courses-draw-tab"
+                                        data-bs-toggle="pill"
+                                        data-bs-target="#course-draw"
+                                        type="button"
+                                        role="tab"
+                                        aria-controls="coures-draw"
+                                        aria-selected="false"
+                                    >
+                                        <h3>draw</h3>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="collection-continer-courses ">
+                            <div class="courses-box">
+                                <h1>
+                                    Expand your career opportunities with Python
+                                </h1>
+                                <p>
+                                    Take one of Udemy’s range of Python courses
+                                    and learn how to code using this incredibly
+                                    useful language. Its simple syntax and
+                                    readability makes Python perfect for Flask,
+                                    Django, data science, and machine learning.
+                                    You’ll learn how to build everything from
+                                    games to sites to apps. Choose from a range
+                                    of courses that will appeal to...
+                                </p>
+                                <br />
+                                <a href="#" class="item1 explore"
+                                    >Explor Python</a
+                                >
+                            </div>
+                            <div class="d-flex flex-wrap" id="courses"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <script></script>
+    </body>
+</html>
