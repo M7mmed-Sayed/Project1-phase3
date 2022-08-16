@@ -2,6 +2,9 @@
     padding: 0;
     margin: 0;
 }
+
+
+
 /* change current tab color*/
 .nav-link.active{
     color: black;
@@ -165,20 +168,20 @@ a:hover {
     color: black;
 }
 .courses {
-    display: flex;
+    display: table;
     flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
+    align-items: stretch;
     padding: 0 4px;
 }
 .course {
-    width: 225px;
+    flex-direction: column;
+    width: 220px;
     height: 530px;
     margin: 5px;
 }
 .course img {
     width: 100%;
-    height: 300px;
+    height: 200px;
 }
 .banner-data {
     padding: 2em;
@@ -354,7 +357,7 @@ a:hover {
     }
     .main-content {
         height: auto;
-        width: 1300px;
+        width: 1500px;
         max-width: 100%;
         display: flex;
         align-items: center;

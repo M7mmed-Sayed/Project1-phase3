@@ -1,0 +1,27 @@
+.multi-carousel {
+    position: relative;
+}
+/* set container of courses flex */
+.multi-carousel .multi-carousel-inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 0 4px;
+}
+
+/* set side carousel in mid of container */
+
+.multi-carousel .leftLst,
+.multi-carousel .rightLst {
+    position: absolute;
+    border-radius: 50%;
+    top: 20%;
+}
+/* set it to left side to left*/
+.multi-carousel .leftLst {
+    left: 0;
+}
+/* set it to left side to left*/
+.multi-carousel .rightLst {
+    right: 0;
+}

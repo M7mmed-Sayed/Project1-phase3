@@ -22,6 +22,7 @@
             crossorigin="anonymous"
         />
         <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="carousel.css" />
 
         <script src="script.js"></script>
         <title>Udemy</title>
@@ -203,12 +204,12 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="collection-continer-courses ">
-                            <div class="courses-box">
-                                <h1>
+                        <div class="collection-continer-courses">
+                            <div class="courses-box" id="course-box">
+                                <h1 id="course-header">
                                     Expand your career opportunities with Python
                                 </h1>
-                                <p>
+                                <p id="course-header-description">
                                     Take one of Udemy’s range of Python courses
                                     and learn how to code using this incredibly
                                     useful language. Its simple syntax and
@@ -219,11 +220,36 @@
                                     of courses that will appeal to...
                                 </p>
                                 <br />
-                                <a href="#" class="item1 explore"
+                                <a
+                                    href="#"
+                                    class="btn btn-group border border-dark"
+                                    id="btn-explor"
                                     >Explor Python</a
                                 >
+                                <div>
+                                    <div
+                                        class="multi-carousel"
+                                        id="multi-carousel"
+                                    >
+                                        <div
+                                            class="multi-carousel-inner d-flex bd-highlight"
+                                            id="courses-continer"
+                                        ></div>
+                                        <button
+                                            class="btn btn-dark leftLst btn-lg"
+                                            onclick="shiftCoursesRight()"
+                                        >
+                                            <i class="fa-solid fa-1x  fa-angle-left"></i>
+                                        </button>
+                                        <button
+                                            class="btn btn-dark rightLst"
+                                            onclick="shiftCoursesLeft()"
+                                        >
+                                            <i class="fa-solid fa-angle-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="d-flex flex-wrap" id="courses"></div>
                         </div>
                     </div>
                 </section>
