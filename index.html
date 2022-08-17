@@ -109,19 +109,21 @@
                                         class="nav-link active btn-lg"
                                         id="courses-python-tab"
                                         data-bs-toggle="pill"
+                                        onclick="selectCoursesTab('python')"
                                         data-bs-target="#course-python"
                                         type="button"
                                         role="tab"
                                         aria-controls="coures-python"
                                         aria-selected="true"
                                     >
-                                        <h3>Python</h3>
+                                        <h3 id="python">Python</h3>
                                     </button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button
                                         class="nav-link btn-lg"
                                         id="courses-excel-tab"
+                                        onclick="selectCoursesTab('excel')"
                                         data-bs-toggle="pill"
                                         data-bs-target="#course-excel"
                                         type="button"
@@ -129,7 +131,7 @@
                                         aria-controls="coures-excel"
                                         aria-selected="false"
                                     >
-                                        <h3>Excel</h3>
+                                        <h3 id="excel">Excel</h3>
                                     </button>
                                 </li>
                                 <li class="nav-item" role="presentation">
@@ -137,19 +139,21 @@
                                         class="nav-link btn-lg"
                                         id="courses-web-tab"
                                         data-bs-toggle="pill"
+                                        onclick="selectCoursesTab('web')"
                                         data-bs-target="#course-web"
                                         type="button"
                                         role="tab"
                                         aria-controls="coures-web"
                                         aria-selected="false"
                                     >
-                                        <h3>Web</h3>
+                                        <h3 id="web">Web</h3>
                                     </button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button
                                         class="nav-link btn-lg"
                                         id="courses-web-js"
+                                         onclick="selectCoursesTab('javascript')"
                                         data-bs-toggle="pill"
                                         data-bs-target="#course-javascript"
                                         type="button"
@@ -157,13 +161,14 @@
                                         aria-controls="coures-js"
                                         aria-selected="false"
                                     >
-                                        <h3>JS</h3>
+                                        <h3 id="javascript">javascript</h3>
                                     </button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button
                                         class="nav-link btn-lg"
                                         id="courses-web-data-science"
+                                        onclick="selectCoursesTab('data-science')"
                                         data-bs-toggle="pill"
                                         data-bs-target="#course-data-science"
                                         type="button"
@@ -171,13 +176,14 @@
                                         aria-controls="coures-data-science"
                                         aria-selected="false"
                                     >
-                                        <h3>data science</h3>
+                                        <h3 id="data-science">data science</h3>
                                     </button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button
                                         class="nav-link btn-lg"
                                         id="courses-aws-tab"
+                                        onclick="selectCoursesTab('aws-cert')"
                                         data-bs-toggle="pill"
                                         data-bs-target="#course-aws"
                                         type="button"
@@ -185,13 +191,14 @@
                                         aria-controls="coures-aws"
                                         aria-selected="false"
                                     >
-                                        <h3>aws cert</h3>
+                                        <h3 id="aws-cert">aws cert</h3>
                                     </button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button
                                         class="nav-link btn-lg"
                                         id="courses-draw-tab"
+                                        onclick="selectCoursesTab('draw')"
                                         data-bs-toggle="pill"
                                         data-bs-target="#course-draw"
                                         type="button"
@@ -199,26 +206,15 @@
                                         aria-controls="coures-draw"
                                         aria-selected="false"
                                     >
-                                        <h3>draw</h3>
+                                        <h3 id="draw">draw</h3>
                                     </button>
                                 </li>
                             </ul>
                         </div>
                         <div class="collection-continer-courses">
                             <div class="courses-box" id="course-box">
-                                <h1 id="course-header">
-                                    Expand your career opportunities with Python
-                                </h1>
-                                <p id="course-header-description">
-                                    Take one of Udemy’s range of Python courses
-                                    and learn how to code using this incredibly
-                                    useful language. Its simple syntax and
-                                    readability makes Python perfect for Flask,
-                                    Django, data science, and machine learning.
-                                    You’ll learn how to build everything from
-                                    games to sites to apps. Choose from a range
-                                    of courses that will appeal to...
-                                </p>
+                                <h1 id="course-tagline"></h1>
+                                <p id="course-description"></p>
                                 <br />
                                 <a
                                     href="#"
@@ -238,14 +234,20 @@
                                         <button
                                             class="btn btn-dark leftLst btn-lg"
                                             onclick="shiftCoursesRight()"
+                                            id="left-move"
                                         >
-                                            <i class="fa-solid fa-1x  fa-angle-left"></i>
+                                            <i
+                                                class="fa-solid fa-1x fa-angle-left"
+                                            ></i>
                                         </button>
                                         <button
                                             class="btn btn-dark rightLst"
                                             onclick="shiftCoursesLeft()"
+                                            id="right-move"
                                         >
-                                            <i class="fa-solid fa-angle-right"></i>
+                                            <i
+                                                class="fa-solid fa-angle-right"
+                                            ></i>
                                         </button>
                                     </div>
                                 </div>

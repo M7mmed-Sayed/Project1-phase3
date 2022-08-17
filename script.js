@@ -1,32 +1,56 @@
-// local api to get courses
-const getAllCourses = 'https://mocki.io/v1/696ac62f-fa19-470a-bd4b-89d75685ca88'
-
+// local genral url to get courses
+const baseURL = 'http://localhost:3009/'
 
 // make it globle to limit wasting time to load the data
-// i created new var  original_Data to be still constent when makeing filtering 
-let maxItemsInDiv = 5
+// i created new var  original_Data to be still constent when makeing filtering
+let maxItemsInDiv = 5 // max items in carousel
+/*first , last id of carousel */
 let firstCourseId = 0
 let lastCourseId = 5
 
-let data ,original_Data
+/*
+original_Data to store orginal data from api
+ data i 'm making some edition at search mode 
+ */
+let data, original_Data
+
+/*all courses i have on current tab */
 let numberOfCourses = 0
-async function callGetAPI(url) {
+
+async function callGetAPICourses(courseName) {
+    //generating  url for courses ans fetching data
+    let url = baseURL + courseName + '-courses'
     const response = await fetch(url)
     data = await response.json()
     original_Data = [].concat(data)
     numberOfCourses = Object.keys(data).length
-    let search = '' // search by defualt value empty string
     /* find width when the pages loads to manage num of items in the containers of courses */
     var elem = document.getElementById('courses-continer')
     var rect = elem.getBoundingClientRect()
     maxItemsInDiv = Math.floor(rect.width / 233)
     lastCourseId = Math.min(maxItemsInDiv, numberOfCourses) // manage lastindex to be in range of courses
-
-    showCourses(search)
+    showCourses()
 }
 // call api when page loads
-callGetAPI(getAllCourses)
+callGetAPICourses('python')
 
+/* header description for each course */
+async function callGetApiCourseHeader(courseName) {
+    //generating  url for header ans fetching header data
+    let url = baseURL + courseName + '-header'
+    const response = await fetch(url)
+    let header = await response.json()
+    // set tagline date to element by id tagline , and description to  elment by id description
+    document.getElementById('course-tagline').innerHTML = header['tagline']
+    document.getElementById('course-description').innerHTML =
+        header['description']
+
+    // set explor button innerr wwith data comming from current tab
+    document.getElementById('btn-explor').innerHTML =
+        'Explor ' + document.getElementById(courseName).innerHTML
+}
+// call it ewch time we refrech the page
+callGetApiCourseHeader('python')
 
 // func to fillters with input search value
 function filterData(search) {
@@ -45,9 +69,20 @@ function filterData(search) {
     showCourses()
 }
 
-// disply courses 
+// disply courses
 function showCourses() {
     let courses_continer = ''
+    /*every call for show courses 
+    check if it is first item display none for left carousel icone 
+    check if it is last item display none right carousel icone 
+     */
+    let btnLeftcarousel = document.getElementById('left-move')
+    let btnRightcarousel = document.getElementById('right-move')
+    if (firstCourseId == 0) btnLeftcarousel.style.display = 'none'
+    else btnLeftcarousel.style.display = 'block'
+    if (lastCourseId == numberOfCourses) btnRightcarousel.style.display = 'none'
+    else btnRightcarousel.style.display = 'block'
+
     for (let x = firstCourseId; x < lastCourseId; x++) {
         let title = data[x]['title']
         let courseLink = data[x]['link']
@@ -87,24 +122,22 @@ function showCourses() {
     document.getElementById('courses-continer').innerHTML = courses_continer
 }
 
-
 // input text fillteration
 function searchByInputValue() {
     // call filterData func by text in input text
     filterData(document.getElementById('input-search').value)
 }
 
-
-
 // manage screen items
 function displayWindowSize() {
     var elem = document.getElementById('courses-continer')
     var rect = elem.getBoundingClientRect()
-    let numOfCourses = Math.floor(rect.width / 233)// count best course items to fit in screen
-    // if there is a change leads to effect to items do it  
-    if (numOfCourses != maxItemsInDiv) { 
-        let diffScreenItems = Math.abs(numOfCourses - maxItemsInDiv)// diff between cur courses at screen and last courses at screen
-        if (numOfCourses < maxItemsInDiv) lastCourseId -= diffScreenItems //  zoom in reomve last courses
+    let numOfCourses = Math.floor(rect.width / 233) // count best course items to fit in screen
+    // if there is a change leads to effect to items do it
+    if (numOfCourses != maxItemsInDiv) {
+        let diffScreenItems = Math.abs(numOfCourses - maxItemsInDiv) // diff between cur courses at screen and last courses at screen
+        if (numOfCourses < maxItemsInDiv)
+            lastCourseId -= diffScreenItems //  zoom in reomve last courses
         else {
             //zoom out
             let rightCourses = lastCourseId
@@ -119,27 +152,32 @@ function displayWindowSize() {
         }
         // set current items to be mazitems in div
         maxItemsInDiv = numOfCourses
-       showCourses()
+        showCourses()
     }
 }
 // add event at change of screen
 window.addEventListener('resize', displayWindowSize)
 
-
-
-// when click at right side button the show new items 
+// when click at right side button the show new items
 function shiftCoursesLeft() {
     lastCourseId += maxItemsInDiv // increase with num of courses which parent div can fill
-    lastCourseId = Math.min(lastCourseId, numberOfCourses)// manage lastindex to be in range of courses
+    lastCourseId = Math.min(lastCourseId, numberOfCourses) // manage lastindex to be in range of courses
     firstCourseId = lastCourseId - maxItemsInDiv // set first index to be offest with items in div
     showCourses()
 }
 
-
-// when click at left side button the show new items 
+// when click at left side button the show new items
 function shiftCoursesRight() {
     lastCourseId -= maxItemsInDiv // decrease with num of courses which parent div can fill
     lastCourseId = Math.max(lastCourseId, maxItemsInDiv) // manage lastindex to be in range of div items
     firstCourseId = lastCourseId - maxItemsInDiv // set first index to be offest with items in div
     showCourses()
+}
+
+// do the action when click on courses nav-tabs
+function selectCoursesTab(CourseName) {
+    // call courses for current tab
+    callGetAPICourses(CourseName)
+    // call header data for current tab
+    callGetApiCourseHeader(CourseName)
 }
