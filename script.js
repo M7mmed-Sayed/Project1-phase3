@@ -68,7 +68,7 @@ function filterData(search) {
     lastCourseId = Math.min(lastCourseId, numberOfCourses) // manage lastindex to be in range of courses
     showCourses()
 }
-
+ 
 // disply courses
 function showCourses() {
     let courses_continer = ''
