@@ -141,7 +141,7 @@ function showCourses() {
         imageElement.classList.add('img-course')
 
         let starsList = document.createElement('ul')
-        starsList.classList.add('nav', 'mx-1')
+        starsList.classList.add('nav','inline-block')
         for (let i = 0; i < 5; i++) {
             let iconElement = document.createElement('i')
             iconElement.classList.add('fa-solid', 'fa-star', 'star-icon')
@@ -149,16 +149,17 @@ function showCourses() {
             starItemElement.append(iconElement)
             starsList.append(starItemElement)
         }
-
         // add child element of parent ratingContainerDiv
         let ratingContainerDiv = document.createElement('div')
-        ratingContainerDiv.classList.add('rate')
+        ratingContainerDiv.classList.add('rate','mt-3')
         ratingContainerDiv.append(ratingElement)
         ratingContainerDiv.append(starsList)
         ratingContainerDiv.append(peopleElement)
         // div to hold rating div and title and price
         let courseInfoElementsContainer = document.createElement('div')
+        courseInfoElementsContainer.classList.add('flex-column')
         courseInfoElementsContainer.append(titleElement)
+        courseInfoElementsContainer.append(author)
         courseInfoElementsContainer.append(ratingContainerDiv)
         courseInfoElementsContainer.append(priceElement)
         // push img and description inside the link to make all work as link
