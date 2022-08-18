@@ -1,5 +1,5 @@
-// local genral url to get courses
-const baseURL = 'http://localhost:3009/'
+// github genral url to get courses
+const baseURL = 'https://my-json-server.typicode.com/M7mmed-Sayed/myjsondata/'
 
 // make it globle to limit wasting time to load the data
 // i created new var  original_Data to be still constent when makeing filtering
@@ -25,15 +25,15 @@ async function callGetAPICourses(courseName) {
     original_Data = [].concat(data)
     numberOfCourses = Object.keys(data).length
     /* find width when the pages loads to manage num of items in the containers of courses */
-    var elem = document.getElementById('courses-continer')
-    var rect = elem.getBoundingClientRect()
-    maxItemsInDiv = Math.floor(rect.width / 233)
-    lastCourseId = Math.min(maxItemsInDiv, numberOfCourses) // manage lastindex to be in range of courses
+    var win = window
+    let width = win.innerWidth
+    // max items in div be 5 min is responsive to current width
+    maxItemsInDiv = Math.min(Math.floor(width / 233), 5)
+    lastCourseId = Math.min(maxItemsInDiv, numberOfCourses)
     showCourses()
 }
 // call api when page loads
 callGetAPICourses('python')
-
 /* header description for each course */
 async function callGetApiCourseHeader(courseName) {
     //generating  url for header ans fetching header data
@@ -68,10 +68,9 @@ function filterData(search) {
     lastCourseId = Math.min(lastCourseId, numberOfCourses) // manage lastindex to be in range of courses
     showCourses()
 }
- 
+
 // disply courses
 function showCourses() {
-    let courses_continer = ''
     /*every call for show courses 
     check if it is first item display none for left carousel icone 
     check if it is last item display none right carousel icone 
@@ -83,43 +82,94 @@ function showCourses() {
     if (lastCourseId == numberOfCourses) btnRightcarousel.style.display = 'none'
     else btnRightcarousel.style.display = 'block'
 
-    for (let x = firstCourseId; x < lastCourseId; x++) {
-        let title = data[x]['title']
-        let courseLink = data[x]['link']
-        let urlImage = data[x]['image']
-        let author = data[x]['author']
-        let price = data[x]['price']
-        let rating = data[x]['rating']
-        let people = data[x]['people']
-        courses_continer += `
-            <div class="course p-2 flex-fill">
-            <a href=${courseLink} >
-            <img class="img-course"  src=${urlImage} />
-                <div>
-                    <h5 class="title">
-                        ${title}
-                    </h5>
-                    <p class"author">${author}</p>
-                        <div class="rate">
-                            <h4 style="color: rgb(110, 44, 0);">
-                                ${rating}
-                            </h4>
-                            <ul class="rank-corse">
-                                <li> <i class="fa-solid fa-star star-icon"></i> </li>
-                                <li> <i class="fa-solid fa-star star-icon"></i> </li>
-                                <li> <i class="fa-solid fa-star star-icon"></i> </li>
-                                <li> <i class="fa-solid fa-star star-icon"></i> </li>
-                                <li><i class="fa-solid fa-star-half-stroke star-icon"></i></li>
-                            </ul>
-                            <h6 style="margin: 5px">(${people})</h6>
-                        </div>
-                        <h4>E£ ${price}</h4>
-                </div>
-                </a>
-            </div>
-        `
+    /*remove current courrses by DOM API */
+    let coursesContinerElment = document.getElementById('courses-continer')
+    while (coursesContinerElment.lastElementChild) {
+        coursesContinerElment.removeChild(
+            coursesContinerElment.lastElementChild
+        )
     }
-    document.getElementById('courses-continer').innerHTML = courses_continer
+    for (let x = firstCourseId; x < lastCourseId; x++) {
+        /*
+        thanks ^-^ for destructuring syntax review 
+        it's one of the best things i learned
+         */
+        let {
+            id,
+            link: courseLink,
+            title,
+            author,
+            image: urlImage,
+            price,
+            rating,
+            people,
+        } = data[x]
+        /*Dom API */
+        // create element for price
+        let priceElement = document.createElement('h4')
+        let textData = document.createTextNode(`E£ ${price}`)
+        priceElement.classList.add('h4')
+        priceElement.appendChild(textData)
+
+        let authorElement = document.createElement('p')
+        textData = document.createTextNode(author)
+        authorElement.classList.add('p')
+        authorElement.appendChild(textData)
+
+        let peopleElement = document.createElement('h6')
+        textData = document.createTextNode(' ( ' + people + ' )')
+        peopleElement.classList.add('h6')
+        peopleElement.appendChild(textData)
+        peopleElement.style.margin = '5'
+
+        let ratingElement = document.createElement('h4')
+        ratingElement.classList.add('h4')
+        textData = document.createTextNode(rating)
+        ratingElement.appendChild(textData)
+        ratingElement.style.color = 'rgb(110, 44, 0)'
+
+        let titleElement = document.createElement('h4')
+        titleElement.classList.add('h4')
+        textData = document.createTextNode(title)
+        titleElement.appendChild(textData)
+
+        let courseLinkElement = document.createElement('a')
+        courseLinkElement.href = `${courseLink}`
+
+        let imageElement = document.createElement('img')
+        imageElement.src = urlImage
+        imageElement.classList.add('img-course')
+
+        let starsList = document.createElement('ul')
+        starsList.classList.add('nav', 'mx-1')
+        for (let i = 0; i < 5; i++) {
+            let iconElement = document.createElement('i')
+            iconElement.classList.add('fa-solid', 'fa-star', 'star-icon')
+            let starItemElement = document.createElement('li')
+            starItemElement.append(iconElement)
+            starsList.append(starItemElement)
+        }
+
+        // add child element of parent ratingContainerDiv
+        let ratingContainerDiv = document.createElement('div')
+        ratingContainerDiv.classList.add('rate')
+        ratingContainerDiv.append(ratingElement)
+        ratingContainerDiv.append(starsList)
+        ratingContainerDiv.append(peopleElement)
+        // div to hold rating div and title and price
+        let courseInfoElementsContainer = document.createElement('div')
+        courseInfoElementsContainer.append(titleElement)
+        courseInfoElementsContainer.append(ratingContainerDiv)
+        courseInfoElementsContainer.append(priceElement)
+        // push img and description inside the link to make all work as link
+        courseLinkElement.append(imageElement)
+        courseLinkElement.append(courseInfoElementsContainer)
+        // main course data
+        let divCoverAllCourseData = document.createElement('div')
+        divCoverAllCourseData.classList.add('course', 'p-2', 'flex-fill')
+        divCoverAllCourseData.append(courseLinkElement)
+        coursesContinerElment.append(divCoverAllCourseData)
+    }
 }
 
 // input text fillteration
@@ -127,7 +177,6 @@ function searchByInputValue() {
     // call filterData func by text in input text
     filterData(document.getElementById('input-search').value)
 }
-
 // manage screen items
 function displayWindowSize() {
     var elem = document.getElementById('courses-continer')
@@ -157,7 +206,6 @@ function displayWindowSize() {
 }
 // add event at change of screen
 window.addEventListener('resize', displayWindowSize)
-
 // when click at right side button the show new items
 function shiftCoursesLeft() {
     lastCourseId += maxItemsInDiv // increase with num of courses which parent div can fill
